@@ -33,14 +33,14 @@
 
 CMDS=lpcflash
 OBJS=lpcflash.o serial.o base64.o serial_cmd.o msg.o const.o chksum.o
-LIBS=
-INCS=
-CC=gcc
+LIBS=$(shell libftdi1-config --libs)
+INCS=$(shell libftdi1-config --cflags)
+CC=cc
 CFLAGS=-Wall
 # -ansi -pedantic
 
 CFLAGS+=-g
-CFLAGS+=${INCS} ${LIBS}
+CFLAGS+=${INCS}
 #CFLAGS+=-DWITH_MAGIC_SLEEP
 
 all: lpcflash

@@ -44,10 +44,17 @@
 #define CLR(var,flag) (var) &= ~(flag)
 #define SET(var,flag) (var) |= (flag)
 
- /* serial i/o routines */
+extern int serial_fd;
+extern struct ftdi_context *ftdi;
+extern int libftdi;
  
+ /* serial i/o routines */
 int serial_open(char *, int);
-int serial_readline(char *, int, int);
-int serial_send(int, int, char *);
+int serial_readline(char *, int);
+int serial_send(int, char *);
+
+ /* ftdi i/o routines */
+int ftdi_open(int, int, int);
+int ftdi_purge(void);
 
 #endif
